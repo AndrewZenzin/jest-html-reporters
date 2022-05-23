@@ -1,5 +1,5 @@
 {
-  "name": "jest-html-reporters",
+  "name": "@andrewzenzin/jest-html-reporters",
   "license": "MIT",
   "version": "3.0.7",
   "description": "Jest test results processor for generating a summary in HTML",
@@ -100,5 +100,8 @@
   "dependencies": {
     "fs-extra": "^9.0.1",
     "open": "^8.0.3"
+  },
+  "directories": {
+    "test": "test"
   }
 }
