@@ -60,7 +60,6 @@ describe('Nested describes', () => {
         {
           ancestorTitles: [describeTitle],
           fullName: `${describeTitle} > ${title}`,
-          failureMessages: 'failed',
           fileAttachInfos: {
             [title]: 'image01.jpg'
           },
@@ -93,7 +92,6 @@ describe('Nested describes', () => {
           title,
           status: 'passed',
           duration: 2,
-          failureMessages: [],
         },
       ],
     }
