@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Card,
@@ -73,6 +73,10 @@ const FileNode = ({ description, filePath, extName }) => {
 };
 
 function info(data, caseAttachInfos, title) {
+  const [isExpanded, setActive] = useState('false');
+  const ToggleClass = () => {
+    setActive(!isExpanded);
+  };
   Modal.warning({
     title: `INFO FOR --> ${title}`,
     width: '80%',
@@ -107,7 +111,13 @@ function info(data, caseAttachInfos, title) {
                       />
                     </Card>
                   ) : (
-                    <pre style={{ width: '100%' }}>{item.description}</pre>
+                    <pre
+                      style={{ width: '100%' }}
+                      className={isExpanded ? 'expanded' : null}
+                      onClick={ToggleClass}
+                    >
+                      {item.description}
+                    </pre>
                   )}
                 </List.Item>
               )}
