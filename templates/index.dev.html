@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style type="text/css">pre { display: block; white-space: pre-wrap; cursor: pointer; max-height: 25px; overflow: hidden; }</style>
+    <style type="text/css">pre { display: block; white-space: pre-wrap; cursor: pointer; max-height: 30px; overflow: hidden; }</style>
     <script>
       window.addEventListener('load', function () {
         document.getElementsByTagName('body')[0].addEventListener('click', function (e) {
           if (e.target.localName === 'pre') {
-            e.target.style = e.target.style.maxHeight !== '100000px' ? 'max-height: 100000px;' : 'max-height: 25px;';
+            e.target.style = e.target.style.maxHeight !== '100000px' ? 'max-height: 100000px;' : 'max-height: 30px;';
           }
         });
       }, false);

@@ -109,7 +109,7 @@ function info(data, caseAttachInfos, title) {
                     </Card>
                   ) : (
                     <pre
-                      style={{ width: '100%' }}
+                      style={{ width: '100%', padding: 5 }}
                     >
                       {item.description}
                     </pre>
