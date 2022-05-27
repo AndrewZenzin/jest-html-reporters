@@ -7,7 +7,7 @@
     window.addEventListener('load', function () {
       document.getElementsByTagName('body')[0].addEventListener('click', function (e) {
         if (e.target.localName === 'pre') {
-          e.target.style = e.target.style.maxHeight !== '100000px' && e.target.style.maxHeight !== 'initial' ? 'max-height: 100000px; padding: 5px;' : 'max-height: 30px; padding: 5px';
+          e.target.style = e.target.style.maxHeight !== '100000px' && e.target.style.maxHeight !== 'initial' ? 'max-height: 100000px; padding: 5px; width:100%;' : 'max-height: 30px; padding: 5px; width:100%;';
         }
       });
     }, false);

@@ -13,7 +13,7 @@ const createMarkup = (text) => ({
 
 const ErrorInfoItem = ({ data }) => {
   if (!data) return null;
-  return <pre dangerouslySetInnerHTML={createMarkup(data)} style={{ padding: '5px', maxHeight: 'initial' }} />;
+  return <pre dangerouslySetInnerHTML={createMarkup(data)} style={{ padding: '5px', maxHeight: 'initial', width: '100%' }} />;
 };
 
 export default ErrorInfoItem;
