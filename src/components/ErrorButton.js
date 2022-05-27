@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   Card,
@@ -73,7 +73,6 @@ const FileNode = ({ description, filePath, extName }) => {
 };
 
 function info(data, caseAttachInfos, title) {
-
   Modal.warning({
     title: `INFO FOR --> ${title}`,
     width: '80%',
