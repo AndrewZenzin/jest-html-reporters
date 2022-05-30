@@ -9,33 +9,10 @@
             e.target.style = e.target.style.maxHeight !== '100000px' && e.target.style.maxHeight !== 'initial' ? 'max-height: 100000px; padding: 5px; width:100%;' : 'max-height: 30px; padding: 5px; width:100%;';
           }
         });
-        var selectionEndTimeout = null;
-
-        // bind selection change event to my function
-        document.onselectionchange = userSelectionChanged;
-
-        function userSelectionChanged() {
-          // wait 500 ms after the last selection change event
-          if (selectionEndTimeout) {
-            clearTimeout(selectionEndTimeout);
-          }
-          selectionEndTimeout = setTimeout(function () {
-            window.trigger('selectionEnd');
-          }, 500);
-        };
-        // helper function
-        function getSelectionText() {
-          let text = '';
-          if (window.getSelection) {
-            text = window.getSelection().toString();
-          } else if (document.selection && document.selection.type !== 'Control') {
-            text = document.selection.createRange().text;
-          }
-          return text;
-        }
-
-        window.bind('selectionEnd', function () {
-          var selectedText = getSelectionText();
+        document.onselectionchange = (e) => {
+          console.log('---e---', e);
+          console.log(document.getSelection());
+          var selectedText = document.getSelection();
           // if the selection is not empty show it :)
           if (selectedText !== '') {
             if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
@@ -44,7 +21,7 @@
               Promise.reject('The Clipboard API is not available.');
             }
           }
-        });
+        };
       }, false);
     </script>
 
