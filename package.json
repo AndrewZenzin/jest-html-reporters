@@ -1,7 +1,7 @@
 {
   "name": "@andrewzenzin/jest-html-reporters",
   "license": "MIT",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Jest test results processor for generating a summary in HTML",
   "main": "index.js",
   "scripts": {
