@@ -2,25 +2,52 @@
 <html>
 
 <head>
-  <style type="text/css">pre { display: block; white-space: pre-wrap; cursor: pointer; max-height: 30px; overflow: hidden; padding: 5px;}</style>
+  <style>
+    pre {
+      display: block;
+      white-space: pre-wrap;
+      cursor: pointer;
+      max-height: 30px;
+      overflow: hidden;
+      padding: 5px;
+    }
+    .alert-msg {
+      position: fixed;
+      padding: 10px 50px;
+      border-radius: 4px;
+      background-color: rgba(255,198,0,0.6);
+      color: white;
+      z-index: 1000;
+      top: 0;
+      font-size: 16px;
+      width: 100%;
+      display: none;
+      z-index: 999999;
+      text-align: center;
+      font-weight: bold;
+      color: rgba(27,82,224,1);
+    }
+  </style>
   <script>
     let selectionEndTimeout = null;
     let selectedValue = '';
     let selectionChanged = false;
+
     // bind selection change event to my function
 
     window.addEventListener('load', function () {
       document.onselectionchange = userSelectionChanged;
-
+      const msgDiv = document.querySelector('.alert-msg');
       function userSelectionChanged() {
         // wait 500 ms after the last selection change event
         if (selectionEndTimeout) {
           clearTimeout(selectionEndTimeout);
+          msgDiv.style.display = 'none';
         }
         selectionEndTimeout = setTimeout(function () {
           document.dispatchEvent(new Event('selectionEnd'));
         }, 100);
-      }
+      };
       // helper function
       function getSelectionText() {
         var text = '';
@@ -39,11 +66,12 @@
         const selectedText = getSelectionText();
         // if the selection is not empty show it :)
         if (selectedText !== '') {
-          console.log(selectedText);
           if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
             if (selectedValue !== selectedText) {
               selectedValue = selectedText;
               selectionChanged = true;
+              msgDiv.style.display = 'block';
+              setTimeout(function () { msgDiv.style.display = 'none'; }, 1000);
             } else {
               selectionChanged = false;
             }
@@ -57,10 +85,8 @@
       });
 
       document.getElementsByTagName('body')[0].addEventListener('click', function (e) {
-        console.log(e);
         setTimeout(function () {
           if (e.target.localName === 'pre' && !selectionChanged) {
-            console.log('---e---', e);
             e.target.style = e.target.style.maxHeight !== '100000px' && e.target.style.maxHeight !== 'initial' ? 'max-height: 100000px; padding: 5px; width:100%;' : 'max-height: 30px; padding: 5px; width:100%;';
             selectionChanged = false;
           }
@@ -80,6 +106,7 @@
 </head>
 
 <body>
+<div class="alert-msg">Text Copied</div>
   <div id="app">
   </div>
 </body>
